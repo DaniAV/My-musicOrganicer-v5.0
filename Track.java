@@ -15,6 +15,8 @@ public class Track
     private String filename;
     //Almacena la cuenta de las veces que se ha reproducido una cancion
     private int playCount;
+    //Se almacena el genero de la cancion
+    private String genero;
     
     /**
      * Constructor for objects of class Track.
@@ -25,6 +27,7 @@ public class Track
     public Track(String artist, String title, String filename)
     {
         int playCount = 0;
+        String genero = "undefined";
         setDetails(artist, title, filename);
     }
     
@@ -37,6 +40,7 @@ public class Track
     public Track(String filename)
     {
         int playCount = 0;
+        String genero = "undefined";
         setDetails("unknown", "unknown", filename);
     }
     
@@ -73,7 +77,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")" + getPlayCount();
+        return artist + ": " + title + "  (file: " + filename + ")" + " Reproducciones: " + getPlayCount() + " Genero: " + getGenero();
     }
     
     /**
@@ -113,5 +117,20 @@ public class Track
         return playCount;
     }
     
+    /**
+     * Devuelve el genero de una cancion
+     */
+    public String getGenero()
+    {
+        return this.genero;
+    }
+    
+    /**
+     * Metodo que permite modificar el genero de una cancion
+     */
+    public void selectGenero(String Genero)
+    {
+        this.genero = Genero;
+    }
     
 }

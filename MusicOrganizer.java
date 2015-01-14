@@ -58,7 +58,7 @@ public class MusicOrganizer
             player.startPlaying(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
             track.addPlayCount();
-            
+
         }
     }
 
@@ -187,5 +187,18 @@ public class MusicOrganizer
                 System.out.println(track.getTitle());
             }
         }
+    }
+
+    /**
+     * Metodo que fija el valor del genero de una canción
+     */
+    public void fijarGenero(int index, String Genero)
+    {
+        if(indexValid(index)) 
+        {
+            Track track = tracks.get(index);
+            track.selectGenero(Genero);
+        }
+
     }
 }
