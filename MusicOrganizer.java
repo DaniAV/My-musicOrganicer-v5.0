@@ -255,7 +255,23 @@ public class MusicOrganizer
             {
                 canciones.remove();
             }
-        }
-    
+        }    
+    }
+    /**
+     * Metodo que permite eliminar tracks que contienen una determinada cadena en el titulo
+     * usando Iterador
+     */
+    public void removeByTitle(String Title)
+    {
+        Iterator<Track> canciones = tracks.iterator();
+        while (canciones.hasNext())
+        {
+            Track tracks = canciones.next();
+            String tr = tracks.getTitle();
+            if(tr.contains(Title))
+            {
+                canciones.remove();
+            }
+        }   
     }
 }
