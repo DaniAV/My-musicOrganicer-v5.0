@@ -16,18 +16,18 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
-    
+    //Devuelve true/false en funcion de si se está reproduciendo musica o no
     private boolean playing;
 
     /**
      * Create a MusicOrganizer
      */
-    public MusicOrganizer()
+    public MusicOrganizer(String CarpetaDeAudio)
     {
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
-        readLibrary("audio");
+        readLibrary(CarpetaDeAudio);
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
         playing = false;
