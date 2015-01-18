@@ -31,6 +31,12 @@ public class Track
         setDetails(artist, title, filename);
     }
     
+    public void incremenPlayCount()
+    {
+        playCount = playCount +1;
+        
+    }
+    
     /**
      * Constructor for objects of class Track.
      * It is assumed that the file name cannot be

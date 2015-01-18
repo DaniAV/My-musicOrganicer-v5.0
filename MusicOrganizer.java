@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.Collections;
 
 /**
  * A class to hold details of audio tracks.
@@ -66,10 +67,10 @@ public class MusicOrganizer
             playing = true;
 
         }
-       
+
         if(playing == true)
         {
-           System.out.println("Reproducción en curso");
+            System.out.println("Reproducción en curso");
         }
     }
 
@@ -213,6 +214,7 @@ public class MusicOrganizer
         }
 
     }
+
     /**
      * Metodo que informa si se está reproduciendo musica en este momento
      */
@@ -227,7 +229,7 @@ public class MusicOrganizer
             System.out.println("No hay reproducción en curso");
         }
     }
-    
+
     /**
      * Metodo que muestra los detalles de todos los tracks almacenados en el organizador
      * utilizando Iterator
@@ -241,7 +243,7 @@ public class MusicOrganizer
             System.out.println(tracks.getDetails());
         }
     }
-    
+
     /**
      * Metodo que permite eliminar tracks que contengan un determindado artista utilizando
      * Iterator
@@ -259,7 +261,7 @@ public class MusicOrganizer
             }
         }    
     }
-    
+
     /**
      * Metodo que permite eliminar tracks que contienen una determinada cadena en el titulo
      * usando Iterador
@@ -277,7 +279,7 @@ public class MusicOrganizer
             }
         }   
     }
-    
+
     /**
      * Metodo que reproduce una de las canciones al azar utilizando la clase Random.
      */
@@ -286,5 +288,39 @@ public class MusicOrganizer
         Random track = new Random();
         int limite = tracks.size();
         playTrack(+track.nextInt(limite));
+    }
+
+    /**
+     * Método que reproduce los primeros segundos de cada cancion en orden aleatorio
+     */
+    public void playShuffle()
+    {
+        Collections.shuffle(tracks); //desordena los elementos del array
+        int index =0; //genera un contador a cero
+        while(index < tracks.size())//mientras el contador sea menor que el numero de elementos del array
+        {
+            Track cancion = tracks.get(index);//Se guarda en cancion la cancion correspondiente con el indice
+            System.out.println(cancion.getDetails());//Muestra los detalles del elemento guardado en cancion
+            player.playSample(cancion.getFilename());//Reproduce el elemento guardado en cancion
+            cancion.incremenPlayCount();//Aumenta en uno el PlayConunt del elemento almacenado en cancion
+            index++;//Se aumenta el indice
+        }
+    }
+
+    public void playShuffle2()
+    {
+        ArrayList<Track> copia = new ArrayList<Track>();
+        copia = (ArrayList)tracks.clone();
+        while (copia.size()>0)
+        {
+            int index = 0;
+            Track cancion = copia.get(index);//Se guarda en cancion la cancion correspondiente con el indice
+            System.out.println(cancion.getDetails());//Muestra los detalles del elemento guardado en cancion
+            player.playSample(cancion.getFilename());//Reproduce el elemento guardado en cancion
+            cancion.incremenPlayCount();//Aumenta en uno el PlayConunt del elemento almacenado en cancion
+            index++;//Se aumenta el indice
+           copia.remove(cancion); //Se borra la cancion de la copia
+            
+        }
     }
 }
